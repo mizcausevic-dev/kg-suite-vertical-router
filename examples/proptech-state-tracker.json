@@ -1,0 +1,17 @@
+{
+  "event_id": "01-co-0003",
+  "state": "US-CO",
+  "timestamp": "2026-02-01T00:00:00Z",
+  "lifecycle_state": "effective",
+  "effective_date": "2026-02-01",
+  "citation": {
+    "short_label": "CO SB 24-205 (revised effective date)",
+    "long_title": "Colorado Artificial Intelligence Act",
+    "jurisdictional_uri": "https://leg.colorado.gov/bills/sb24-205",
+    "session_year": 2024
+  },
+  "regulator": {
+    "primary_agency_code": "CO-AG",
+    "primary_agency_name": "Colorado Attorney General"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "incident_card_version": "0.1",
+  "profile_id": "employment-ai-incident-card-v0.1",
+  "incident_id": "INC-MOMENTUMHR-2026-12-0011",
+  "discovered_at": "2026-12-12T09:30:00Z",
+  "reported_at": "2026-12-15T16:00:00Z",
+  "event_type": "ai-nyc-ll-144-audit-failure",
+  "severity": "S3-serious",
+  "affected_ai_system": {
+    "name": "VendorE HireAssess v2.x",
+    "model_version": "2.4.1"
+  },
+  "affected_decision_card_ref": "https://momentumhr.example/.well-known/decisions/MOMENTUMHR-DEC-2026-HRTECH-0021.json",
+  "regulator_referral_evaluation": [
+    {"pathway": "eeoc-notification",                     "status": "filed",                  "destination": "EEOC",                                                "filed_at": "2026-12-16T11:00:00Z"},
+    {"pathway": "nyc-dcwp-notification",                 "status": "filed",                  "destination": "NYC Department of Consumer and Worker Protection",   "filed_at": "2026-12-16T11:20:00Z"},
+    {"pathway": "doj-civil-rights-referral",             "status": "evaluated-not-required", "destination": "DOJ Civil Rights Division",                          "reason": "S3-serious not S4-critical"}
+  ],
+  "remediation_plan": {
+    "immediate": ["VendorE HireAssess v2.x suspended for senior-engineering reqs"]
+  },
+  "signed_by_key_uri": "https://momentumhr.example/.well-known/keys/incident-card-signer.json#k-2026q4"
+}

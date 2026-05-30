@@ -1,0 +1,27 @@
+{
+  "decision_card_version": "0.3",
+  "decision_id": "COASTGUARD-DEC-2026-INSURTECH-0014",
+  "issued_at": "2026-08-01T15:00:00Z",
+  "buyer": {
+    "name": "Coastguard Insurance",
+    "url": "https://coastguard-insurance.example/"
+  },
+  "subject": {
+    "ai_system": "VendorI ClaimsTriage v3.x",
+    "vendor": "VendorI Insurance AI, Inc."
+  },
+  "decision": {
+    "status": "approved-with-conditions",
+    "decision_date": "2026-08-01"
+  },
+  "vault_contract": {
+    "profile": "policyholder-data-vault-contract-v0.1",
+    "data_category_access": [
+      {"category": "acord-claim-detail", "protection_level": "tokenized"}
+    ]
+  },
+  "publishing": {
+    "decision_uri": "https://coastguard-insurance.example/.well-known/decisions/COASTGUARD-DEC-2026-INSURTECH-0014.json",
+    "signed_by_key_uri": "https://coastguard-insurance.example/.well-known/keys/decision-signer.json#k-2026q3"
+  }
+}

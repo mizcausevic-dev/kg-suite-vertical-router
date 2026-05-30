@@ -1,0 +1,61 @@
+name: 'KG Suite Vertical Router'
+description: 'Auto-detect + route + verify any Kinetic Gain Protocol Suite artifact (Decision Card / Incident Card / Evidence Bundle / audit-stream event / state-tracker event) to the right vertical-specific verification.'
+author: 'Miz Causevic'
+branding:
+  icon: 'shuffle'
+  color: 'purple'
+
+inputs:
+  artifact-path:
+    description: 'Path to a single Suite artifact JSON file OR an NDJSON audit-stream file'
+    required: true
+  fail-on-warning:
+    description: 'Exit non-zero on any warning (default false; warnings still print)'
+    required: false
+    default: 'false'
+  json-output:
+    description: 'Emit machine-readable JSON instead of human-readable output'
+    required: false
+    default: 'false'
+
+outputs:
+  vertical:
+    description: 'Detected vertical (HealthTech / EdTech / PropTech-RealEstate / InsurTech / HRTech / FinTech)'
+    value: ${{ steps.route.outputs.vertical }}
+  artifact-kind:
+    description: 'Detected artifact kind'
+    value: ${{ steps.route.outputs.artifact-kind }}
+  profile-id:
+    description: 'Identified profile_id (when applicable)'
+    value: ${{ steps.route.outputs.profile-id }}
+  valid:
+    description: 'true | false'
+    value: ${{ steps.route.outputs.valid }}
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    - shell: bash
+      run: npm install --no-audit --no-fund --silent
+      working-directory: ${{ github.action_path }}
+    - id: route
+      shell: bash
+      working-directory: ${{ github.action_path }}
+      env:
+        ARTIFACT_PATH: ${{ inputs.artifact-path }}
+        FAIL_ON_WARNING: ${{ inputs.fail-on-warning }}
+        JSON_OUTPUT: ${{ inputs.json-output }}
+      run: |
+        set -e
+        ARTIFACT_FULL="$GITHUB_WORKSPACE/$ARTIFACT_PATH"
+        if [ ! -f "$ARTIFACT_FULL" ]; then
+          echo "::error::artifact-path '$ARTIFACT_FULL' not found"; exit 3
+        fi
+        if [ "$JSON_OUTPUT" = "true" ]; then
+          node src/cli.mjs "$ARTIFACT_FULL" --json
+        else
+          node src/cli.mjs "$ARTIFACT_FULL"
+        fi

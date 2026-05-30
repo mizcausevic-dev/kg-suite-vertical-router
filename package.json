@@ -1,0 +1,46 @@
+{
+  "name": "kg-suite-vertical-router",
+  "version": "0.1.0",
+  "description": "Auto-detect + route any Kinetic Gain Protocol Suite artifact (Decision Card / Incident Card / Evidence Bundle / audit-stream event / state-tracker event) to the right vertical-specific verification logic across all 6 vertical 6-packs (36 spec repos).",
+  "type": "module",
+  "bin": {
+    "kg-suite-route": "bin/kg-suite-route"
+  },
+  "main": "src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./detect": "./src/detect.mjs",
+    "./route": "./src/route.mjs",
+    "./verify": "./src/verify.mjs",
+    "./manifest": "./manifest/profiles.json"
+  },
+  "scripts": {
+    "test": "node tests/router.test.mjs",
+    "demo": "node src/cli.mjs examples/healthtech-fhir-event.ndjson && node src/cli.mjs examples/edtech-student-event.ndjson && node src/cli.mjs examples/proptech-mortgage-event.ndjson && node src/cli.mjs examples/insurtech-claims-event.ndjson && node src/cli.mjs examples/hrtech-employment-event.ndjson && node src/cli.mjs examples/fintech-credit-event.ndjson"
+  },
+  "files": [
+    "src/",
+    "manifest/",
+    "bin/",
+    "examples/",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "kinetic-gain-protocol-suite",
+    "ai-governance",
+    "decision-card",
+    "incident-card",
+    "evidence-bundle",
+    "audit-stream",
+    "router",
+    "router-cli",
+    "regulated-vertical"
+  ],
+  "repository": "github:mizcausevic-dev/kg-suite-vertical-router",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
