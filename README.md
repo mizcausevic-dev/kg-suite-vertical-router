@@ -1,6 +1,6 @@
 # kg-suite-vertical-router
 
-> **Kinetic Gain Protocol Suite Vertical Router v0.1.** A single npm package + GitHub Action that auto-detects + routes any Suite artifact — Decision Card vault contract, Incident Card, Evidence Bundle manifest, audit-stream event, or state-tracker lifecycle event — to the right vertical-specific verification logic across all six vertical 6-packs (36 spec repos). Makes the Suite's parallel-structure thesis provably code-true at runtime, not just rhetorically consistent across READMEs.
+> **Kinetic Gain Protocol Suite Vertical Router v0.2.** A single npm package + GitHub Action that auto-detects + routes any Suite artifact — Decision Card vault contract, Incident Card, Evidence Bundle manifest, audit-stream event (BOTH spec-shape and ref-impl-shape), or state-tracker lifecycle event — to the right vertical-specific verification logic across all **ten vertical 6-packs (60 spec repos)** AND their **10 AGPL-3.0 reference implementations**. Makes the Suite's parallel-structure thesis provably code-true at runtime, not just rhetorically consistent across READMEs.
 
 [![CI](https://github.com/mizcausevic-dev/kg-suite-vertical-router/actions/workflows/ci.yml/badge.svg)](https://github.com/mizcausevic-dev/kg-suite-vertical-router/actions/workflows/ci.yml)
 
@@ -17,18 +17,22 @@ Given any Suite artifact, the router:
 
 ## Why this matters
 
-The Suite ships six parallel vertical 6-packs (36 sibling spec repos):
+The Suite ships ten parallel vertical 6-packs (60 sibling spec repos) — and as of router v0.2, every vertical also has an **AGPL-3.0 reference implementation** that emits a slightly different audit-stream shape (`regulatory_basis` as array of strings + `agent.*_id_tokenized` string IDs vs the spec's `regulatory_basis: {code}` object + `ai_recommendation.human_X_required` boolean). The router handles both shapes from the same CLI:
 
-| Vertical | Federal floor |
-| --- | --- |
-| **HealthTech** | FDA SaMD · HIPAA · Section 1557 |
-| **EdTech** | FERPA · COPPA · IDEA / Section 504 · ESSA |
-| **PropTech / Real Estate** | RESPA · ECOA Reg B · Fair Housing · HMDA · GLBA |
-| **InsurTech** | NAIC AI Model Bulletin (Nov 2023) · NY DFS CL 7 · CO SB 21-169 |
-| **HR Tech / Employment AI** | EEOC AI Guidance (May 2023) · Title VII · ADA · ADEA · GINA · NYC LL 144 |
-| **FinTech** | CFPB · OCC / FRB / FDIC joint AI · ECOA Reg B · FCRA Reg V · GLBA · BSA/AML |
+| Vertical | Federal floor | Reference impl |
+| --- | --- | --- |
+| **HealthTech** | FDA SaMD · HIPAA · Section 1557 | [`fhir-resource-access-audit-reference`](https://github.com/mizcausevic-dev/fhir-resource-access-audit-reference) |
+| **EdTech** | FERPA · COPPA · IDEA / Section 504 · ESSA | [`student-data-access-audit-stream-reference`](https://github.com/mizcausevic-dev/student-data-access-audit-stream-reference) |
+| **PropTech / Real Estate** | RESPA · ECOA Reg B · Fair Housing · HMDA · GLBA | [`mortgage-decision-record-audit-stream-reference`](https://github.com/mizcausevic-dev/mortgage-decision-record-audit-stream-reference) |
+| **InsurTech** | NAIC AI Model Bulletin · NY DFS CL 7 · CO SB 21-169 | [`insurance-decision-record-audit-stream-reference`](https://github.com/mizcausevic-dev/insurance-decision-record-audit-stream-reference) |
+| **HR Tech / Employment AI** | EEOC AI Guidance · Title VII · ADA · NYC LL 144 | [`employment-decision-record-audit-stream-reference`](https://github.com/mizcausevic-dev/employment-decision-record-audit-stream-reference) |
+| **FinTech** | CFPB · OCC/FRB/FDIC joint AI · ECOA · FCRA · GLBA · BSA/AML | [`financial-decision-record-audit-stream-reference`](https://github.com/mizcausevic-dev/financial-decision-record-audit-stream-reference) |
+| **GovTech** | OMB M-24-10 · AI Bill of Rights · Privacy Act · FedRAMP | [`government-decision-record-audit-stream-reference`](https://github.com/mizcausevic-dev/government-decision-record-audit-stream-reference) |
+| **LegalTech** | ABA Model Rules 1.1c8/1.6/3.3/5.3/5.5 · privilege · WPD | [`matter-decision-record-audit-stream-reference`](https://github.com/mizcausevic-dev/matter-decision-record-audit-stream-reference) |
+| **EnergyTech** | NERC CIP-002–014 · TSA SD-2021-02C · FERC Order 2222 | [`grid-decision-record-audit-stream-reference`](https://github.com/mizcausevic-dev/grid-decision-record-audit-stream-reference) |
+| **DefenseTech** | DFARS 7012/7019/7020/7021 · CMMC 2.0 · NIST SP 800-171 · ITAR · EAR | [`defense-decision-record-audit-stream-reference`](https://github.com/mizcausevic-dev/defense-decision-record-audit-stream-reference) |
 
-Each vertical's six repos mirror the same six shapes (Decision Card vault · Incident Card · Evidence Bundle compliance · Evidence Bundle bias · Operator audit-stream · Operator regulatory-lifecycle tracker). The router proves that parallelism is real: **one tool with one CLI command routes + verifies any artifact across any vertical**.
+Each vertical's six repos mirror the same six shapes (Decision Card vault · Incident Card · Evidence Bundle compliance · Evidence Bundle bias · Operator audit-stream · Operator regulatory-lifecycle tracker). The router proves that parallelism is real: **one tool with one CLI command routes + verifies any artifact across any vertical AND any of its two audit-stream shape variants**.
 
 ## Quick start
 
@@ -48,7 +52,7 @@ kg-suite-route path/to/artifact.json --json
 Or as a GitHub Action:
 
 ```yaml
-- uses: mizcausevic-dev/kg-suite-vertical-router@v0.1
+- uses: mizcausevic-dev/kg-suite-vertical-router@v0.2
   with:
     artifact-path: artifacts/coastguard-q4-decision-card.json
 ```
@@ -154,7 +158,8 @@ PRs welcome.
 
 | Repo | Role |
 | --- | --- |
-| All 36 sibling spec repos across the 6 vertical 6-packs | Routed targets |
+| All 60 sibling spec repos across the 10 vertical 6-packs | Routed targets (spec-shape artifacts) |
+| All 10 AGPL-3.0 reference implementations (one per vertical) | Routed targets (ref-impl-shape audit-stream events) |
 | [`evidence-bundle-spec`](https://github.com/mizcausevic-dev/evidence-bundle-spec) | Underlying Evidence Bundle conventions |
 | [`decision-card-spec`](https://github.com/mizcausevic-dev/decision-card-spec) | Underlying Decision Card conventions |
 | [`kg-suite-conformance-runner`](https://github.com/mizcausevic-dev/kg-suite-conformance-runner) | Deeper conformance runner for individual specs (per-repo) |

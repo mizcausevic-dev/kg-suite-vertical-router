@@ -15,7 +15,11 @@ const ALLOWED_VERTICALS = [
   "PropTech / Real Estate",
   "Insurance / InsurTech",
   "HR Tech / Employment AI",
-  "FinTech"
+  "FinTech",
+  "GovTech",
+  "LegalTech",
+  "EnergyTech",
+  "DefenseTech"
 ];
 
 function lookupProfile(manifest, profileId) {
@@ -37,10 +41,18 @@ function lookupStateTrackerByAgency(manifest, agencyCode) {
   if (!agencyCode) return null;
   const code = agencyCode.toUpperCase();
   if (code.startsWith("FDA"))                                  return { vertical: "HealthTech", confidence: "high" };
-  if (code.endsWith("-DOI") || code.includes("-DOI-"))         return { vertical: "Insurance / InsurTech", confidence: "high" };
-  if (code.endsWith("-DOB") || code.includes("BANK") || code === "NY-DFS" || code === "CA-DFPI" || code === "IL-IDFPR" || code === "WA-DFI") return { vertical: "FinTech", confidence: "medium" };
+  if (code.endsWith("-DOI") || code.includes("-DOI-") || code === "NAIC") return { vertical: "Insurance / InsurTech", confidence: "high" };
+  if (code.endsWith("-DOB") || code.includes("BANK") || code === "NY-DFS" || code === "CA-DFPI" || code === "IL-IDFPR" || code === "WA-DFI" || code === "CFPB") return { vertical: "FinTech", confidence: "medium" };
   if (code === "NYC-DCWP" || code === "IL-DHR" || code === "MD-DOLLR" || code === "EEOC" || code === "OFCCP" || code === "CO-DOLE") return { vertical: "HR Tech / Employment AI", confidence: "high" };
-  if (code.includes("ED") || code.includes("-DOE") || code === "USDOE")        return { vertical: "EdTech", confidence: "medium" };
+  if (code.startsWith("US-ED") || code.startsWith("USDOE-ED") || code === "USDOE" || code === "USED")        return { vertical: "EdTech", confidence: "medium" };
+  // GovTech: OMB + GSA + federal agency-of-record codes
+  if (code === "OMB" || code === "GSA" || code === "OPM" || code.startsWith("USDS-") || code.startsWith("FED-")) return { vertical: "GovTech", confidence: "high" };
+  // LegalTech: state bars + ABA + federal courts
+  if (code === "ABA" || code.endsWith("-BAR") || code.startsWith("USDC-") || code.startsWith("USCA-")) return { vertical: "LegalTech", confidence: "high" };
+  // EnergyTech: NERC + FERC + state PUCs + DOE (energy side, distinct from US-ED)
+  if (code === "NERC" || code === "FERC" || code === "TSA-PIPELINE" || code.endsWith("-PUC") || code === "DOE-OE" || code === "DOE-CESER") return { vertical: "EnergyTech", confidence: "high" };
+  // DefenseTech: DoD + service branches + DCSA + CISA cyber-incident
+  if (code === "DOD" || code === "DCSA" || code === "DCMA" || code === "DLA" || code === "CISA" || code === "USCYBERCOM" || code.startsWith("DOD-") || code === "STATE-DDTC") return { vertical: "DefenseTech", confidence: "high" };
   return { vertical: null, confidence: "none" };
 }
 

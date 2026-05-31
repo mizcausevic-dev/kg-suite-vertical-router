@@ -1,7 +1,7 @@
 {
   "name": "kg-suite-vertical-router",
-  "version": "0.1.0",
-  "description": "Auto-detect + route any Kinetic Gain Protocol Suite artifact (Decision Card / Incident Card / Evidence Bundle / audit-stream event / state-tracker event) to the right vertical-specific verification logic across all 6 vertical 6-packs (36 spec repos).",
+  "version": "0.2.0",
+  "description": "Auto-detect + route any Kinetic Gain Protocol Suite artifact (Decision Card / Incident Card / Evidence Bundle / audit-stream event / state-tracker event) to the right vertical-specific verification logic across all 10 vertical 6-packs (60 spec repos) AND their 10 AGPL-3.0 reference implementations. Supports BOTH spec-shape and ref-impl-shape audit-stream events.",
   "type": "module",
   "bin": {
     "kg-suite-route": "bin/kg-suite-route"
@@ -16,7 +16,9 @@
   },
   "scripts": {
     "test": "node tests/router.test.mjs",
-    "demo": "node src/cli.mjs examples/healthtech-fhir-event.ndjson && node src/cli.mjs examples/edtech-student-event.ndjson && node src/cli.mjs examples/proptech-mortgage-event.ndjson && node src/cli.mjs examples/insurtech-claims-event.ndjson && node src/cli.mjs examples/hrtech-employment-event.ndjson && node src/cli.mjs examples/fintech-credit-event.ndjson"
+    "demo": "node src/cli.mjs examples/healthtech-fhir-event.ndjson && node src/cli.mjs examples/edtech-student-event.ndjson && node src/cli.mjs examples/proptech-mortgage-event.ndjson && node src/cli.mjs examples/insurtech-claims-event.ndjson && node src/cli.mjs examples/hrtech-employment-event.ndjson && node src/cli.mjs examples/fintech-credit-event.ndjson",
+    "demo:refimpl": "node src/cli.mjs examples/healthtech-refimpl-event.ndjson && node src/cli.mjs examples/legaltech-refimpl-event.ndjson && node src/cli.mjs examples/energytech-refimpl-event.ndjson && node src/cli.mjs examples/defensetech-refimpl-event.ndjson && node src/cli.mjs examples/govtech-refimpl-event.ndjson && node src/cli.mjs examples/fintech-refimpl-event.ndjson && node src/cli.mjs examples/hrtech-refimpl-event.ndjson && node src/cli.mjs examples/edtech-refimpl-event.ndjson && node src/cli.mjs examples/proptech-refimpl-event.ndjson && node src/cli.mjs examples/insurtech-refimpl-event.ndjson",
+    "demo:all": "npm run demo && npm run demo:refimpl"
   },
   "files": [
     "src/",

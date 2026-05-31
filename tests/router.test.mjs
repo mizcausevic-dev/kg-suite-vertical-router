@@ -13,13 +13,28 @@ const manifest = JSON.parse(readFileSync(new URL("../manifest/profiles.json", im
 const examplesDir = fileURLToPath(new URL("../examples/", import.meta.url));
 
 const EXPECTED = {
-  "healthtech-fhir-event.ndjson":     {vertical: "HealthTech",              artifact_kind: "audit-stream-event"},
+  // SPEC-shape audit-stream events (regulatory_basis: {code, ...} object)
+  "healthtech-fhir-event.ndjson":      {vertical: "HealthTech",              artifact_kind: "audit-stream-event"},
   "edtech-student-event.ndjson":       {vertical: "EdTech",                  artifact_kind: "audit-stream-event"},
-  "proptech-mortgage-event.ndjson":   {vertical: "PropTech / Real Estate",  artifact_kind: "audit-stream-event"},
+  "proptech-mortgage-event.ndjson":    {vertical: "PropTech / Real Estate",  artifact_kind: "audit-stream-event"},
   "insurtech-claims-event.ndjson":     {vertical: "Insurance / InsurTech",   artifact_kind: "audit-stream-event"},
-  "hrtech-employment-event.ndjson":   {vertical: "HR Tech / Employment AI", artifact_kind: "audit-stream-event"},
+  "hrtech-employment-event.ndjson":    {vertical: "HR Tech / Employment AI", artifact_kind: "audit-stream-event"},
   "fintech-credit-event.ndjson":       {vertical: "FinTech",                 artifact_kind: "audit-stream-event"},
 
+  // REF-IMPL-shape audit-stream events (regulatory_basis: [...] array, agent.*_id_tokenized)
+  // One per vertical — completes 10/10 coverage.
+  "healthtech-refimpl-event.ndjson":   {vertical: "HealthTech",              artifact_kind: "audit-stream-event"},
+  "legaltech-refimpl-event.ndjson":    {vertical: "LegalTech",               artifact_kind: "audit-stream-event"},
+  "energytech-refimpl-event.ndjson":   {vertical: "EnergyTech",              artifact_kind: "audit-stream-event"},
+  "defensetech-refimpl-event.ndjson":  {vertical: "DefenseTech",             artifact_kind: "audit-stream-event"},
+  "govtech-refimpl-event.ndjson":      {vertical: "GovTech",                 artifact_kind: "audit-stream-event"},
+  "fintech-refimpl-event.ndjson":      {vertical: "FinTech",                 artifact_kind: "audit-stream-event"},
+  "hrtech-refimpl-event.ndjson":       {vertical: "HR Tech / Employment AI", artifact_kind: "audit-stream-event"},
+  "edtech-refimpl-event.ndjson":       {vertical: "EdTech",                  artifact_kind: "audit-stream-event"},
+  "proptech-refimpl-event.ndjson":     {vertical: "PropTech / Real Estate",  artifact_kind: "audit-stream-event"},
+  "insurtech-refimpl-event.ndjson":    {vertical: "Insurance / InsurTech",   artifact_kind: "audit-stream-event"},
+
+  // Other artifact kinds
   "insurtech-decision-card.json":      {vertical: "Insurance / InsurTech",   artifact_kind: "decision-card-vault-contract"},
   "hrtech-incident-card.json":         {vertical: "HR Tech / Employment AI", artifact_kind: "incident-card"},
   "fintech-evidence-bundle.json":      {vertical: "FinTech",                 artifact_kind: "evidence-bundle-manifest"},

@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.2.0] — 2026-05-31
+
+### Added — catch up to 10 verticals × 60 specs + 10 AGPL ref impls
+
+- **4 new verticals** in `manifest/profiles.json`: **GovTech** (OMB M-24-10 + Privacy Act + AI Bill of Rights + FedRAMP), **LegalTech** (ABA Model Rules 1.1c8/1.6/3.3/5.3/5.5 + attorney-client privilege + work-product doctrine), **EnergyTech** (NERC CIP-002–014 + TSA SD-2021-02C + FERC Order 2222), **DefenseTech** (DFARS 7012/7019/7020/7021 + CMMC 2.0 L2/L3 + NIST SP 800-171/172 + ITAR + EAR + NISPOM). Manifest now lists 16 new profile entries (4 verticals × 4 specs/vertical mapped), 4 new state-tracker repos, and 8 new audit-stream kind prefixes (`matter.`, `legaltech.`, `grid.`, `energytech.`, `defense.`, `defensetech.`, `government.`, `govtech.`).
+- **Reference-implementation prefix aliases** for all 10 verticals — every ref impl's kind prefix routes to its vertical: `proptech.`, `insurtech.`, `edtech.`, `hrtech.`, `healthtech.`, `legaltech.`, `energytech.`, `defensetech.`, `govtech.` (+ existing `fintech.`). The manifest distinguishes spec-side prefixes from `"shape": "ref-impl"` aliases so consumers know which schema variant to expect.
+- **Top-level `reference_implementations` block** in the manifest — explicit mapping from each ref-impl repo name to its (vertical, ref-impl kind prefix, invariants) so the router can answer "for a given vertical, which ref impl proves the spec invariants?"
+- **Dual-shape audit-stream verifier** (`src/verify.mjs`): detects shape via `Array.isArray(regulatory_basis)` and dispatches. Ref-impl shape adds invariants matching the new ref impls: **PropTech UNIVERSAL** human-underwriter (fires on adverse-action-capable kind regardless of recommendation) + **ECOA 30-day** notice anchored on `application_completed_at`; **InsurTech SCOPED** human-adjudicator + **NAIC 90-day backward-bounded** bias-monitoring window with AFTER-event timestamp check; **EdTech FERPA basis enumeration** (8-entry set from 34 CFR Part 99) + **COPPA must-precede-event** consent for `student_age < 13`.
+- **Extended agency-code routing** in `src/route.mjs`: NERC / FERC / TSA-PIPELINE / *-PUC / DOE-OE / DOE-CESER (EnergyTech), DoD / DCSA / DCMA / DLA / CISA / USCYBERCOM / STATE-DDTC (DefenseTech), OMB / GSA / OPM (GovTech), ABA / *-BAR / USDC-* / USCA-* (LegalTech), NAIC (InsurTech), CFPB (FinTech). `ALLOWED_VERTICALS` now lists all 10.
+- **10 new example files**, one per vertical — real NDJSON streams emitted by each ref impl (copied verbatim from each ref impl's `examples/*.ndjson`): `{healthtech,legaltech,energytech,defensetech,govtech,fintech,hrtech,edtech,proptech,insurtech}-refimpl-event.ndjson`. These exercise the ref-impl shape end-to-end through the router.
+- **`npm run demo:refimpl`** + **`npm run demo:all`** scripts — one-shot routing demo across all 10 ref impls.
+- **Test coverage extended to 20 examples** (10 spec-shape + 10 ref-impl-shape + 4 non-audit-stream). All 20 green.
+- **README/manifest description bumped** from "6 vertical 6-packs (36 spec repos)" to "10 vertical 6-packs (60 spec repos) AND their 10 AGPL-3.0 reference implementations."
+
+### Changed
+
+- `regulatory_basis` field downgraded from hard-required to warning-level for spec-shape events. Older ref impls (notably HealthTech's `fhir-resource-access-audit-reference`) pre-date the convention. Router-level stays permissive; the source repo's own verifier enforces full schema requirements.
+
+### Backwards compatibility
+
+- All 10 pre-existing example files (spec-shape audit-stream + Decision Card / Incident Card / Evidence Bundle / state-tracker) continue to route and verify identically. v0.1 router API unchanged.
+
 ## [0.1.0] — 2026-05-29
 
 ### Added
