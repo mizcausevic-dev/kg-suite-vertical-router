@@ -1,6 +1,6 @@
 # kg-suite-vertical-router
 
-> **Kinetic Gain Protocol Suite Vertical Router v0.2.** A single npm package + GitHub Action that auto-detects + routes any Suite artifact — Decision Card vault contract, Incident Card, Evidence Bundle manifest, audit-stream event (BOTH spec-shape and ref-impl-shape), or state-tracker lifecycle event — to the right vertical-specific verification logic across all **ten vertical 6-packs (60 spec repos)** AND their **10 AGPL-3.0 reference implementations**. Makes the Suite's parallel-structure thesis provably code-true at runtime, not just rhetorically consistent across READMEs.
+> **Kinetic Gain Protocol Suite Vertical Router v0.3.** A single npm package + GitHub Action that auto-detects + routes any Suite artifact — Decision Card vault contract, Incident Card, Evidence Bundle manifest, audit-stream event (BOTH spec-shape and ref-impl-shape), or state-tracker lifecycle event — to the right vertical-specific verification logic across all **eleven vertical 6-packs (66 spec repos)** AND their **10 AGPL-3.0 reference implementations**. Makes the Suite's parallel-structure thesis provably code-true at runtime, not just rhetorically consistent across READMEs.
 
 [![CI](https://github.com/mizcausevic-dev/kg-suite-vertical-router/actions/workflows/ci.yml/badge.svg)](https://github.com/mizcausevic-dev/kg-suite-vertical-router/actions/workflows/ci.yml)
 
@@ -17,7 +17,7 @@ Given any Suite artifact, the router:
 
 ## Why this matters
 
-The Suite ships ten parallel vertical 6-packs (60 sibling spec repos) — and as of router v0.2, every vertical also has an **AGPL-3.0 reference implementation** that emits a slightly different audit-stream shape (`regulatory_basis` as array of strings + `agent.*_id_tokenized` string IDs vs the spec's `regulatory_basis: {code}` object + `ai_recommendation.human_X_required` boolean). The router handles both shapes from the same CLI:
+The Suite ships eleven parallel vertical 6-packs (66 sibling spec repos) — and as of router v0.2, every vertical also has an **AGPL-3.0 reference implementation** that emits a slightly different audit-stream shape (`regulatory_basis` as array of strings + `agent.*_id_tokenized` string IDs vs the spec's `regulatory_basis: {code}` object + `ai_recommendation.human_X_required` boolean). The router handles both shapes from the same CLI:
 
 | Vertical | Federal floor | Reference impl |
 | --- | --- | --- |

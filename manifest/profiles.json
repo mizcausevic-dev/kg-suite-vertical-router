@@ -1,6 +1,6 @@
 {
   "router_manifest_version": "0.2",
-  "description": "Authoritative mapping from Kinetic Gain Protocol Suite profile_id, kind-enum prefix, and regulatory_basis code to (vertical, artifact_kind, source_repo, invariants). Used by kg-suite-vertical-router to route any Suite artifact to the right vertical-specific verification logic across all 10 vertical 6-packs (60 spec repos) AND their 10 AGPL-3.0 reference implementations (one per vertical, distinct ref-impl-shape kind prefixes).",
+  "description": "Authoritative mapping from Kinetic Gain Protocol Suite profile_id, kind-enum prefix, and regulatory_basis code to (vertical, artifact_kind, source_repo, invariants). Used by kg-suite-vertical-router to route any Suite artifact to the right vertical-specific verification logic across all 11 vertical 6-packs (66 spec repos) AND their 10 AGPL-3.0 reference implementations (one per vertical, distinct ref-impl-shape kind prefixes).",
   "verticals": [
     "HealthTech",
     "EdTech",
@@ -11,7 +11,8 @@
     "GovTech",
     "LegalTech",
     "EnergyTech",
-    "DefenseTech"
+    "DefenseTech",
+    "RetailTech / Consumer AI"
   ],
   "artifact_kinds": [
     "decision-card-vault-contract",
@@ -22,108 +23,839 @@
     "state-tracker-event"
   ],
   "profiles": {
-    "phi-vault-contract-v0.1":                          {"vertical": "HealthTech",              "artifact_kind": "decision-card-vault-contract", "source_repo": "mizcausevic-dev/phi-vault-contract-profile",                      "anchor_regulations": ["HIPAA"]},
-    "medical-adverse-event-incident-card-v0.1":         {"vertical": "HealthTech",              "artifact_kind": "incident-card",                "source_repo": "mizcausevic-dev/medical-adverse-event-incident-card",            "anchor_regulations": ["FDA MedWatch", "EU MDR vigilance", "IMDRF", "CTCAE"]},
-    "hipaa-readiness-v0.1":                             {"vertical": "HealthTech",              "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/hipaa-readiness-evidence-bundle",                 "anchor_regulations": ["HIPAA Security Rule"]},
-    "clinical-bias-cohort-coverage-v0.1":               {"vertical": "HealthTech",              "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/clinical-bias-cohort-coverage-lab",               "anchor_regulations": ["OMB SPD 15", "Section 1557", "FDA"]},
-
-    "pii-student-vault-contract-v0.1":                  {"vertical": "EdTech",                  "artifact_kind": "decision-card-vault-contract", "source_repo": "mizcausevic-dev/pii-student-vault-contract-profile",              "anchor_regulations": ["FERPA", "COPPA"]},
-    "ai-student-record-incident-card-v0.1":             {"vertical": "EdTech",                  "artifact_kind": "incident-card",                "source_repo": "mizcausevic-dev/ai-student-record-incident-card-profile",         "anchor_regulations": ["FERPA", "COPPA", "IDEA", "Section 504", "Title VI/IX/504"]},
-    "ferpa-readiness-v0.1":                             {"vertical": "EdTech",                  "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/ferpa-readiness-evidence-bundle",                  "anchor_regulations": ["FERPA"]},
-    "student-cohort-bias-coverage-v0.1":                {"vertical": "EdTech",                  "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/student-cohort-bias-coverage-lab",                 "anchor_regulations": ["ESSA", "Title VI/IX/504", "IDEA", "WIDA EL"]},
-
-    "mls-data-access-vault-contract-v0.1":              {"vertical": "PropTech / Real Estate",  "artifact_kind": "decision-card-vault-contract", "source_repo": "mizcausevic-dev/mls-data-access-vault-contract-profile",          "anchor_regulations": ["RESPA", "ECOA", "Fair Housing", "MLS", "GLBA"]},
-    "title-chain-evidence-incident-card-v0.1":          {"vertical": "PropTech / Real Estate",  "artifact_kind": "incident-card",                "source_repo": "mizcausevic-dev/title-chain-evidence-incident-card-profile",      "anchor_regulations": ["CFPB UDAAP", "ECOA", "Fair Housing", "RESPA Section 8"]},
-    "respa-readiness-v0.1":                             {"vertical": "PropTech / Real Estate",  "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/respa-readiness-evidence-bundle",                 "anchor_regulations": ["RESPA", "ECOA Reg B", "TILA-RESPA TRID", "Fair Housing Act", "HMDA", "GLBA Safeguards", "CFPB UDAAP", "ALTA"]},
-    "mortgage-applicant-bias-coverage-v0.1":            {"vertical": "PropTech / Real Estate",  "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/mortgage-applicant-bias-coverage-lab",            "anchor_regulations": ["ECOA Reg B", "Fair Housing Act", "EEOC four-fifths-rule"]},
-
-    "policyholder-data-vault-contract-v0.1":            {"vertical": "Insurance / InsurTech",   "artifact_kind": "decision-card-vault-contract", "source_repo": "mizcausevic-dev/policyholder-data-vault-contract-profile",        "anchor_regulations": ["ACORD", "GLBA", "NAIC AI Bulletin", "CO SB 21-169"]},
-    "unfair-discrimination-incident-card-v0.1":         {"vertical": "Insurance / InsurTech",   "artifact_kind": "incident-card",                "source_repo": "mizcausevic-dev/unfair-discrimination-incident-card-profile",     "anchor_regulations": ["NAIC AI Bulletin", "CO SB 21-169", "NY DFS CL 7", "FCRA"]},
-    "naic-ai-bulletin-readiness-v0.1":                  {"vertical": "Insurance / InsurTech",   "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/naic-ai-bulletin-readiness-evidence-bundle",      "anchor_regulations": ["NAIC AI Bulletin Nov 2023", "NY DFS CL 7", "CO 3 CCR 702-10"]},
-    "insurance-applicant-bias-coverage-v0.1":           {"vertical": "Insurance / InsurTech",   "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/insurance-applicant-bias-coverage-lab",           "anchor_regulations": ["CO SB 21-169", "NAIC AI Bulletin §3", "EEOC four-fifths-rule", "actuarial-soundness"]},
-
-    "candidate-data-vault-contract-v0.1":               {"vertical": "HR Tech / Employment AI", "artifact_kind": "decision-card-vault-contract", "source_repo": "mizcausevic-dev/candidate-data-vault-contract-profile",            "anchor_regulations": ["EEOC AI Guidance", "ADA", "NYC LL 144", "IL 820 ILCS 42", "MD HB 1202"]},
-    "employment-ai-incident-card-v0.1":                 {"vertical": "HR Tech / Employment AI", "artifact_kind": "incident-card",                "source_repo": "mizcausevic-dev/employment-ai-incident-card-profile",              "anchor_regulations": ["EEOC", "NYC LL 144", "ADA", "OFCCP", "Title VII"]},
-    "eeoc-readiness-v0.1":                              {"vertical": "HR Tech / Employment AI", "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/eeoc-readiness-evidence-bundle",                   "anchor_regulations": ["EEOC AI Guidance", "Title VII", "ADA", "ADEA", "GINA", "OFCCP"]},
-    "employment-candidate-bias-coverage-v0.1":          {"vertical": "HR Tech / Employment AI", "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/employment-candidate-bias-coverage-lab",           "anchor_regulations": ["NYC LL 144", "UGESP four-fifths-rule", "UGESP §1607.5(D) 2-SD", "Bostock"]},
-
-    "financial-customer-data-vault-contract-v0.1":      {"vertical": "FinTech",                 "artifact_kind": "decision-card-vault-contract", "source_repo": "mizcausevic-dev/financial-customer-data-vault-contract-profile",   "anchor_regulations": ["GLBA", "FCRA", "ECOA", "CFPB Section 1033", "BSA/AML"]},
-    "financial-ai-incident-card-v0.1":                  {"vertical": "FinTech",                 "artifact_kind": "incident-card",                "source_repo": "mizcausevic-dev/financial-ai-incident-card-profile",               "anchor_regulations": ["CFPB", "OCC/FRB/FDIC", "FCRA", "UDAAP", "Section 1071", "BSA/AML"]},
-    "cfpb-readiness-v0.1":                              {"vertical": "FinTech",                 "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/cfpb-readiness-evidence-bundle",                    "anchor_regulations": ["CFPB AI bulletin", "OCC 2011-12", "FRB SR 11-7", "ECOA Reg B", "FCRA Reg V", "GLBA Safeguards", "BSA/AML", "Section 1071", "Section 1033", "CFPB UDAAP"]},
-    "financial-applicant-bias-coverage-v0.1":           {"vertical": "FinTech",                 "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/financial-applicant-bias-coverage-lab",             "anchor_regulations": ["ECOA Reg B", "CFPB Section 1071", "CFPB UDAAP", "OCC/FRB/FDIC joint AI", "EEOC four-fifths-rule"]},
-
-    "citizen-data-vault-contract-v0.1":                 {"vertical": "GovTech",                 "artifact_kind": "decision-card-vault-contract", "source_repo": "mizcausevic-dev/citizen-data-vault-contract-profile",               "anchor_regulations": ["Privacy Act 1974", "FOIA", "OMB M-24-10", "FedRAMP", "Section 508"]},
-    "government-ai-incident-card-v0.1":                 {"vertical": "GovTech",                 "artifact_kind": "incident-card",                "source_repo": "mizcausevic-dev/government-ai-incident-card-profile",                "anchor_regulations": ["OMB M-24-10", "Privacy Act 1974", "AI Bill of Rights", "FedRAMP", "Section 508"]},
-    "omb-m24-10-readiness-v0.1":                        {"vertical": "GovTech",                 "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/omb-m24-10-readiness-evidence-bundle",               "anchor_regulations": ["OMB M-24-10", "AI Bill of Rights", "EO 14179", "NIST AI RMF", "FedRAMP"]},
-    "government-applicant-bias-coverage-v0.1":          {"vertical": "GovTech",                 "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/government-applicant-bias-coverage-lab",             "anchor_regulations": ["OMB M-24-10", "EO 13985 equity", "Title VI", "Section 504", "ADA", "ECOA Reg B applied to federal-program credit"]},
-
-    "privilege-vault-contract-v0.1":                    {"vertical": "LegalTech",               "artifact_kind": "decision-card-vault-contract", "source_repo": "mizcausevic-dev/privilege-vault-contract-profile",                   "anchor_regulations": ["ABA Model Rule 1.6", "attorney-client privilege", "work-product doctrine FRCP 26(b)(3)"]},
-    "matter-bias-coverage-v0.1":                        {"vertical": "LegalTech",               "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/matter-bias-coverage-lab",                            "anchor_regulations": ["ABA Model Rule 8.4(g)", "attorney-client privilege", "court-order taxonomy"]},
-    "aba-readiness-v0.1":                               {"vertical": "LegalTech",               "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/aba-readiness-evidence-bundle",                       "anchor_regulations": ["ABA Model Rule 1.1c8", "1.6", "3.3", "5.3", "5.5", "Mata v. Avianca court orders"]},
-    "matter-incident-card-v0.1":                        {"vertical": "LegalTech",               "artifact_kind": "incident-card",                "source_repo": "mizcausevic-dev/matter-incident-card-profile",                        "anchor_regulations": ["ABA Model Rules", "Mata v. Avianca", "state bar opinions"]},
-
-    "grid-data-vault-contract-v0.1":                    {"vertical": "EnergyTech",              "artifact_kind": "decision-card-vault-contract", "source_repo": "mizcausevic-dev/grid-data-vault-contract-profile",                    "anchor_regulations": ["NERC CIP-011", "NERC CIP-013", "FERC RC&IS"]},
-    "grid-bias-coverage-v0.1":                          {"vertical": "EnergyTech",              "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/grid-bias-coverage-lab",                              "anchor_regulations": ["NERC reliability standards", "FERC Order 2222 DER non-discrimination", "state PUC orders"]},
-    "nerc-readiness-v0.1":                              {"vertical": "EnergyTech",              "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/nerc-readiness-evidence-bundle",                      "anchor_regulations": ["NERC CIP-002 through CIP-014", "TSA SD-2021-02C", "DOE EO 14028", "FERC Order 2222"]},
-    "grid-incident-card-v0.1":                          {"vertical": "EnergyTech",              "artifact_kind": "incident-card",                "source_repo": "mizcausevic-dev/grid-incident-card-profile",                          "anchor_regulations": ["NERC CIP-008", "TSA SD-2021-02C", "DOE OE-417"]},
-
-    "cui-vault-contract-v0.1":                          {"vertical": "DefenseTech",             "artifact_kind": "decision-card-vault-contract", "source_repo": "mizcausevic-dev/cui-vault-contract-profile",                          "anchor_regulations": ["DFARS 252.204-7012", "CMMC 2.0", "NIST SP 800-171", "ITAR", "EAR"]},
-    "defense-bias-coverage-v0.1":                       {"vertical": "DefenseTech",             "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/defense-bias-coverage-lab",                           "anchor_regulations": ["DoD AI Ethical Principles", "DoDD 3000.09 (autonomy)"]},
-    "cmmc-readiness-v0.1":                              {"vertical": "DefenseTech",             "artifact_kind": "evidence-bundle-profile",      "source_repo": "mizcausevic-dev/cmmc-readiness-evidence-bundle",                       "anchor_regulations": ["DFARS 252.204-7012/7019/7020/7021", "CMMC 2.0 L2/L3", "NIST SP 800-171/172", "ITAR", "EAR", "EO 13526", "ICD 705", "DoDI 5230.24", "NISPOM"]},
-    "defense-incident-card-v0.1":                       {"vertical": "DefenseTech",             "artifact_kind": "incident-card",                "source_repo": "mizcausevic-dev/defense-incident-card-profile",                       "anchor_regulations": ["DFARS 252.204-7012 (72-hour cyber-incident clock)", "DoD CIO breach reporting", "DCSA security violation reporting"]}
+    "phi-vault-contract-v0.1": {
+      "vertical": "HealthTech",
+      "artifact_kind": "decision-card-vault-contract",
+      "source_repo": "mizcausevic-dev/phi-vault-contract-profile",
+      "anchor_regulations": [
+        "HIPAA"
+      ]
+    },
+    "medical-adverse-event-incident-card-v0.1": {
+      "vertical": "HealthTech",
+      "artifact_kind": "incident-card",
+      "source_repo": "mizcausevic-dev/medical-adverse-event-incident-card",
+      "anchor_regulations": [
+        "FDA MedWatch",
+        "EU MDR vigilance",
+        "IMDRF",
+        "CTCAE"
+      ]
+    },
+    "hipaa-readiness-v0.1": {
+      "vertical": "HealthTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/hipaa-readiness-evidence-bundle",
+      "anchor_regulations": [
+        "HIPAA Security Rule"
+      ]
+    },
+    "clinical-bias-cohort-coverage-v0.1": {
+      "vertical": "HealthTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/clinical-bias-cohort-coverage-lab",
+      "anchor_regulations": [
+        "OMB SPD 15",
+        "Section 1557",
+        "FDA"
+      ]
+    },
+    "pii-student-vault-contract-v0.1": {
+      "vertical": "EdTech",
+      "artifact_kind": "decision-card-vault-contract",
+      "source_repo": "mizcausevic-dev/pii-student-vault-contract-profile",
+      "anchor_regulations": [
+        "FERPA",
+        "COPPA"
+      ]
+    },
+    "ai-student-record-incident-card-v0.1": {
+      "vertical": "EdTech",
+      "artifact_kind": "incident-card",
+      "source_repo": "mizcausevic-dev/ai-student-record-incident-card-profile",
+      "anchor_regulations": [
+        "FERPA",
+        "COPPA",
+        "IDEA",
+        "Section 504",
+        "Title VI/IX/504"
+      ]
+    },
+    "ferpa-readiness-v0.1": {
+      "vertical": "EdTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/ferpa-readiness-evidence-bundle",
+      "anchor_regulations": [
+        "FERPA"
+      ]
+    },
+    "student-cohort-bias-coverage-v0.1": {
+      "vertical": "EdTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/student-cohort-bias-coverage-lab",
+      "anchor_regulations": [
+        "ESSA",
+        "Title VI/IX/504",
+        "IDEA",
+        "WIDA EL"
+      ]
+    },
+    "mls-data-access-vault-contract-v0.1": {
+      "vertical": "PropTech / Real Estate",
+      "artifact_kind": "decision-card-vault-contract",
+      "source_repo": "mizcausevic-dev/mls-data-access-vault-contract-profile",
+      "anchor_regulations": [
+        "RESPA",
+        "ECOA",
+        "Fair Housing",
+        "MLS",
+        "GLBA"
+      ]
+    },
+    "title-chain-evidence-incident-card-v0.1": {
+      "vertical": "PropTech / Real Estate",
+      "artifact_kind": "incident-card",
+      "source_repo": "mizcausevic-dev/title-chain-evidence-incident-card-profile",
+      "anchor_regulations": [
+        "CFPB UDAAP",
+        "ECOA",
+        "Fair Housing",
+        "RESPA Section 8"
+      ]
+    },
+    "respa-readiness-v0.1": {
+      "vertical": "PropTech / Real Estate",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/respa-readiness-evidence-bundle",
+      "anchor_regulations": [
+        "RESPA",
+        "ECOA Reg B",
+        "TILA-RESPA TRID",
+        "Fair Housing Act",
+        "HMDA",
+        "GLBA Safeguards",
+        "CFPB UDAAP",
+        "ALTA"
+      ]
+    },
+    "mortgage-applicant-bias-coverage-v0.1": {
+      "vertical": "PropTech / Real Estate",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/mortgage-applicant-bias-coverage-lab",
+      "anchor_regulations": [
+        "ECOA Reg B",
+        "Fair Housing Act",
+        "EEOC four-fifths-rule"
+      ]
+    },
+    "policyholder-data-vault-contract-v0.1": {
+      "vertical": "Insurance / InsurTech",
+      "artifact_kind": "decision-card-vault-contract",
+      "source_repo": "mizcausevic-dev/policyholder-data-vault-contract-profile",
+      "anchor_regulations": [
+        "ACORD",
+        "GLBA",
+        "NAIC AI Bulletin",
+        "CO SB 21-169"
+      ]
+    },
+    "unfair-discrimination-incident-card-v0.1": {
+      "vertical": "Insurance / InsurTech",
+      "artifact_kind": "incident-card",
+      "source_repo": "mizcausevic-dev/unfair-discrimination-incident-card-profile",
+      "anchor_regulations": [
+        "NAIC AI Bulletin",
+        "CO SB 21-169",
+        "NY DFS CL 7",
+        "FCRA"
+      ]
+    },
+    "naic-ai-bulletin-readiness-v0.1": {
+      "vertical": "Insurance / InsurTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/naic-ai-bulletin-readiness-evidence-bundle",
+      "anchor_regulations": [
+        "NAIC AI Bulletin Nov 2023",
+        "NY DFS CL 7",
+        "CO 3 CCR 702-10"
+      ]
+    },
+    "insurance-applicant-bias-coverage-v0.1": {
+      "vertical": "Insurance / InsurTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/insurance-applicant-bias-coverage-lab",
+      "anchor_regulations": [
+        "CO SB 21-169",
+        "NAIC AI Bulletin §3",
+        "EEOC four-fifths-rule",
+        "actuarial-soundness"
+      ]
+    },
+    "candidate-data-vault-contract-v0.1": {
+      "vertical": "HR Tech / Employment AI",
+      "artifact_kind": "decision-card-vault-contract",
+      "source_repo": "mizcausevic-dev/candidate-data-vault-contract-profile",
+      "anchor_regulations": [
+        "EEOC AI Guidance",
+        "ADA",
+        "NYC LL 144",
+        "IL 820 ILCS 42",
+        "MD HB 1202"
+      ]
+    },
+    "employment-ai-incident-card-v0.1": {
+      "vertical": "HR Tech / Employment AI",
+      "artifact_kind": "incident-card",
+      "source_repo": "mizcausevic-dev/employment-ai-incident-card-profile",
+      "anchor_regulations": [
+        "EEOC",
+        "NYC LL 144",
+        "ADA",
+        "OFCCP",
+        "Title VII"
+      ]
+    },
+    "eeoc-readiness-v0.1": {
+      "vertical": "HR Tech / Employment AI",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/eeoc-readiness-evidence-bundle",
+      "anchor_regulations": [
+        "EEOC AI Guidance",
+        "Title VII",
+        "ADA",
+        "ADEA",
+        "GINA",
+        "OFCCP"
+      ]
+    },
+    "employment-candidate-bias-coverage-v0.1": {
+      "vertical": "HR Tech / Employment AI",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/employment-candidate-bias-coverage-lab",
+      "anchor_regulations": [
+        "NYC LL 144",
+        "UGESP four-fifths-rule",
+        "UGESP §1607.5(D) 2-SD",
+        "Bostock"
+      ]
+    },
+    "financial-customer-data-vault-contract-v0.1": {
+      "vertical": "FinTech",
+      "artifact_kind": "decision-card-vault-contract",
+      "source_repo": "mizcausevic-dev/financial-customer-data-vault-contract-profile",
+      "anchor_regulations": [
+        "GLBA",
+        "FCRA",
+        "ECOA",
+        "CFPB Section 1033",
+        "BSA/AML"
+      ]
+    },
+    "financial-ai-incident-card-v0.1": {
+      "vertical": "FinTech",
+      "artifact_kind": "incident-card",
+      "source_repo": "mizcausevic-dev/financial-ai-incident-card-profile",
+      "anchor_regulations": [
+        "CFPB",
+        "OCC/FRB/FDIC",
+        "FCRA",
+        "UDAAP",
+        "Section 1071",
+        "BSA/AML"
+      ]
+    },
+    "cfpb-readiness-v0.1": {
+      "vertical": "FinTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/cfpb-readiness-evidence-bundle",
+      "anchor_regulations": [
+        "CFPB AI bulletin",
+        "OCC 2011-12",
+        "FRB SR 11-7",
+        "ECOA Reg B",
+        "FCRA Reg V",
+        "GLBA Safeguards",
+        "BSA/AML",
+        "Section 1071",
+        "Section 1033",
+        "CFPB UDAAP"
+      ]
+    },
+    "financial-applicant-bias-coverage-v0.1": {
+      "vertical": "FinTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/financial-applicant-bias-coverage-lab",
+      "anchor_regulations": [
+        "ECOA Reg B",
+        "CFPB Section 1071",
+        "CFPB UDAAP",
+        "OCC/FRB/FDIC joint AI",
+        "EEOC four-fifths-rule"
+      ]
+    },
+    "citizen-data-vault-contract-v0.1": {
+      "vertical": "GovTech",
+      "artifact_kind": "decision-card-vault-contract",
+      "source_repo": "mizcausevic-dev/citizen-data-vault-contract-profile",
+      "anchor_regulations": [
+        "Privacy Act 1974",
+        "FOIA",
+        "OMB M-24-10",
+        "FedRAMP",
+        "Section 508"
+      ]
+    },
+    "government-ai-incident-card-v0.1": {
+      "vertical": "GovTech",
+      "artifact_kind": "incident-card",
+      "source_repo": "mizcausevic-dev/government-ai-incident-card-profile",
+      "anchor_regulations": [
+        "OMB M-24-10",
+        "Privacy Act 1974",
+        "AI Bill of Rights",
+        "FedRAMP",
+        "Section 508"
+      ]
+    },
+    "omb-m24-10-readiness-v0.1": {
+      "vertical": "GovTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/omb-m24-10-readiness-evidence-bundle",
+      "anchor_regulations": [
+        "OMB M-24-10",
+        "AI Bill of Rights",
+        "EO 14179",
+        "NIST AI RMF",
+        "FedRAMP"
+      ]
+    },
+    "government-applicant-bias-coverage-v0.1": {
+      "vertical": "GovTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/government-applicant-bias-coverage-lab",
+      "anchor_regulations": [
+        "OMB M-24-10",
+        "EO 13985 equity",
+        "Title VI",
+        "Section 504",
+        "ADA",
+        "ECOA Reg B applied to federal-program credit"
+      ]
+    },
+    "privilege-vault-contract-v0.1": {
+      "vertical": "LegalTech",
+      "artifact_kind": "decision-card-vault-contract",
+      "source_repo": "mizcausevic-dev/privilege-vault-contract-profile",
+      "anchor_regulations": [
+        "ABA Model Rule 1.6",
+        "attorney-client privilege",
+        "work-product doctrine FRCP 26(b)(3)"
+      ]
+    },
+    "matter-bias-coverage-v0.1": {
+      "vertical": "LegalTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/matter-bias-coverage-lab",
+      "anchor_regulations": [
+        "ABA Model Rule 8.4(g)",
+        "attorney-client privilege",
+        "court-order taxonomy"
+      ]
+    },
+    "aba-readiness-v0.1": {
+      "vertical": "LegalTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/aba-readiness-evidence-bundle",
+      "anchor_regulations": [
+        "ABA Model Rule 1.1c8",
+        "1.6",
+        "3.3",
+        "5.3",
+        "5.5",
+        "Mata v. Avianca court orders"
+      ]
+    },
+    "matter-incident-card-v0.1": {
+      "vertical": "LegalTech",
+      "artifact_kind": "incident-card",
+      "source_repo": "mizcausevic-dev/matter-incident-card-profile",
+      "anchor_regulations": [
+        "ABA Model Rules",
+        "Mata v. Avianca",
+        "state bar opinions"
+      ]
+    },
+    "grid-data-vault-contract-v0.1": {
+      "vertical": "EnergyTech",
+      "artifact_kind": "decision-card-vault-contract",
+      "source_repo": "mizcausevic-dev/grid-data-vault-contract-profile",
+      "anchor_regulations": [
+        "NERC CIP-011",
+        "NERC CIP-013",
+        "FERC RC&IS"
+      ]
+    },
+    "grid-bias-coverage-v0.1": {
+      "vertical": "EnergyTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/grid-bias-coverage-lab",
+      "anchor_regulations": [
+        "NERC reliability standards",
+        "FERC Order 2222 DER non-discrimination",
+        "state PUC orders"
+      ]
+    },
+    "nerc-readiness-v0.1": {
+      "vertical": "EnergyTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/nerc-readiness-evidence-bundle",
+      "anchor_regulations": [
+        "NERC CIP-002 through CIP-014",
+        "TSA SD-2021-02C",
+        "DOE EO 14028",
+        "FERC Order 2222"
+      ]
+    },
+    "grid-incident-card-v0.1": {
+      "vertical": "EnergyTech",
+      "artifact_kind": "incident-card",
+      "source_repo": "mizcausevic-dev/grid-incident-card-profile",
+      "anchor_regulations": [
+        "NERC CIP-008",
+        "TSA SD-2021-02C",
+        "DOE OE-417"
+      ]
+    },
+    "cui-vault-contract-v0.1": {
+      "vertical": "DefenseTech",
+      "artifact_kind": "decision-card-vault-contract",
+      "source_repo": "mizcausevic-dev/cui-vault-contract-profile",
+      "anchor_regulations": [
+        "DFARS 252.204-7012",
+        "CMMC 2.0",
+        "NIST SP 800-171",
+        "ITAR",
+        "EAR"
+      ]
+    },
+    "defense-bias-coverage-v0.1": {
+      "vertical": "DefenseTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/defense-bias-coverage-lab",
+      "anchor_regulations": [
+        "DoD AI Ethical Principles",
+        "DoDD 3000.09 (autonomy)"
+      ]
+    },
+    "cmmc-readiness-v0.1": {
+      "vertical": "DefenseTech",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/cmmc-readiness-evidence-bundle",
+      "anchor_regulations": [
+        "DFARS 252.204-7012/7019/7020/7021",
+        "CMMC 2.0 L2/L3",
+        "NIST SP 800-171/172",
+        "ITAR",
+        "EAR",
+        "EO 13526",
+        "ICD 705",
+        "DoDI 5230.24",
+        "NISPOM"
+      ]
+    },
+    "defense-incident-card-v0.1": {
+      "vertical": "DefenseTech",
+      "artifact_kind": "incident-card",
+      "source_repo": "mizcausevic-dev/defense-incident-card-profile",
+      "anchor_regulations": [
+        "DFARS 252.204-7012 (72-hour cyber-incident clock)",
+        "DoD CIO breach reporting",
+        "DCSA security violation reporting"
+      ]
+    },
+    "retail-decision-record-audit-v0.1": {
+      "vertical": "RetailTech / Consumer AI",
+      "artifact_kind": "audit-stream-event",
+      "source_repo": "mizcausevic-dev/retail-decision-record-audit-stream",
+      "anchor_regulations": [
+        "FTC Section 5",
+        "EU Omnibus 2019/2161 Art 6a",
+        "NY S365A ATBP",
+        "CA SB-892",
+        "CCPA / CPRA",
+        "BIPA 740 ILCS 14",
+        "PCI DSS 4.0"
+      ]
+    },
+    "state-retail-ai-disclosure-v0.1": {
+      "vertical": "RetailTech / Consumer AI",
+      "artifact_kind": "state-tracker-event",
+      "source_repo": "mizcausevic-dev/state-retail-ai-disclosure-tracker",
+      "anchor_regulations": [
+        "NY S365A ATBP",
+        "CA SB-892",
+        "CA CPPA ADMT",
+        "IL BIPA + 2024 SB 2979",
+        "NYC NYC §22-1201"
+      ]
+    },
+    "ftc-algorithmic-pricing-readiness-v0.1": {
+      "vertical": "RetailTech / Consumer AI",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/ftc-algorithmic-pricing-readiness-evidence-bundle",
+      "anchor_regulations": [
+        "FTC Section 5",
+        "FTC algorithmic-pricing guidance 2023",
+        "FTC Operation AI Comply 2024",
+        "EU Omnibus 2019/2161"
+      ]
+    },
+    "consumer-pricing-bias-coverage-v0.1": {
+      "vertical": "RetailTech / Consumer AI",
+      "artifact_kind": "evidence-bundle-profile",
+      "source_repo": "mizcausevic-dev/consumer-pricing-bias-coverage-lab",
+      "anchor_regulations": [
+        "FTC Section 5 disparate-impact",
+        "NY S365A annual bias audit",
+        "CA CPPA ADMT bias audit",
+        "EU AI Act Art 10/15"
+      ]
+    },
+    "retail-ai-incident-card-v0.1": {
+      "vertical": "RetailTech / Consumer AI",
+      "artifact_kind": "incident-card",
+      "source_repo": "mizcausevic-dev/retail-ai-incident-card-profile",
+      "anchor_regulations": [
+        "FTC Section 5 complaint handling",
+        "state AG inquiry response",
+        "EU AI Act Art 73 serious-incident reporting"
+      ]
+    },
+    "shopper-pii-vault-contract-v0.1": {
+      "vertical": "RetailTech / Consumer AI",
+      "artifact_kind": "decision-card-vault-contract",
+      "source_repo": "mizcausevic-dev/shopper-pii-vault-contract-profile",
+      "anchor_regulations": [
+        "PCI DSS 4.0",
+        "BIPA §15(b)+(c)",
+        "CCPA / CPRA",
+        "state biometric laws",
+        "GLBA Safeguards retail-finance"
+      ]
+    }
   },
   "audit_stream_kind_prefixes": {
-    "fhir.":          {"vertical": "HealthTech",              "source_repo": "mizcausevic-dev/fhir-resource-access-audit",                  "reference_repo": "mizcausevic-dev/fhir-resource-access-audit-reference",                  "invariants": ["human-clinician-required-on-adverse-outcome", "fhir-permissible-purpose"]},
-    "healthtech.":    {"vertical": "HealthTech",              "source_repo": "mizcausevic-dev/fhir-resource-access-audit",                  "reference_repo": "mizcausevic-dev/fhir-resource-access-audit-reference",                  "invariants": ["human-clinician-required-on-adverse-outcome", "fhir-permissible-purpose"], "shape": "ref-impl-alias"},
-
-    "student.":       {"vertical": "EdTech",                  "source_repo": "mizcausevic-dev/student-data-access-audit-stream",             "reference_repo": "mizcausevic-dev/student-data-access-audit-stream-reference",            "invariants": ["ferpa-school-official-or-consent-basis-required"]},
-    "edtech.":        {"vertical": "EdTech",                  "source_repo": "mizcausevic-dev/student-data-access-audit-stream",             "reference_repo": "mizcausevic-dev/student-data-access-audit-stream-reference",            "invariants": ["ferpa-school-official-or-consent-basis-required", "coppa-verifiable-parental-consent-must-precede-event-for-under-13"], "shape": "ref-impl"},
-
-    "mortgage.":      {"vertical": "PropTech / Real Estate",  "source_repo": "mizcausevic-dev/mortgage-decision-record-audit-stream",        "reference_repo": "mizcausevic-dev/mortgage-decision-record-audit-stream-reference",       "invariants": ["human-underwriter-required-on-adverse-action"]},
-    "proptech.":      {"vertical": "PropTech / Real Estate",  "source_repo": "mizcausevic-dev/mortgage-decision-record-audit-stream",        "reference_repo": "mizcausevic-dev/mortgage-decision-record-audit-stream-reference",       "invariants": ["human-underwriter-required-UNIVERSAL-on-adverse-action-capable-kinds", "ecoa-reg-b-30-day-adverse-action-notice-anchored-on-application-completed"], "shape": "ref-impl"},
-
-    "insurance.":     {"vertical": "Insurance / InsurTech",   "source_repo": "mizcausevic-dev/insurance-decision-record-audit-stream",       "reference_repo": "mizcausevic-dev/insurance-decision-record-audit-stream-reference",      "invariants": ["human-adjudicator-required-on-adverse-action-capable-recommendation"]},
-    "insurtech.":     {"vertical": "Insurance / InsurTech",   "source_repo": "mizcausevic-dev/insurance-decision-record-audit-stream",       "reference_repo": "mizcausevic-dev/insurance-decision-record-audit-stream-reference",      "invariants": ["human-adjudicator-required-on-adverse-action-capable-recommendation-SCOPED", "naic-model-bulletin-ai-90-day-bias-monitoring-bounded-backward-window"], "shape": "ref-impl"},
-
-    "employment.":    {"vertical": "HR Tech / Employment AI", "source_repo": "mizcausevic-dev/employment-decision-record-audit-stream",      "reference_repo": "mizcausevic-dev/employment-decision-record-audit-stream-reference",     "invariants": ["human-hiring-decision-required-on-adverse-action-capable", "nyc-ll-144-candidate-notice-required-on-aedt-external-candidate-event"]},
-    "hrtech.":        {"vertical": "HR Tech / Employment AI", "source_repo": "mizcausevic-dev/employment-decision-record-audit-stream",      "reference_repo": "mizcausevic-dev/employment-decision-record-audit-stream-reference",     "invariants": ["human-hiring-decision-required-on-adverse-action-capable", "nyc-ll-144-14-day-backward-before-event-candidate-notice-window"], "shape": "ref-impl"},
-
-    "fintech.":       {"vertical": "FinTech",                 "source_repo": "mizcausevic-dev/financial-decision-record-audit-stream",       "reference_repo": "mizcausevic-dev/financial-decision-record-audit-stream-reference",      "invariants": ["human-credit-officer-required-on-adverse-action-capable", "fcra-permissible-purpose-required-on-credit-bureau-resource"]},
-
-    "matter.":        {"vertical": "LegalTech",               "source_repo": "mizcausevic-dev/matter-decision-record-audit-stream",          "reference_repo": "mizcausevic-dev/matter-decision-record-audit-stream-reference",         "invariants": ["privilege-tier-consistency", "engagement-letter-binding", "citation-validation-before-production-ready"]},
-    "legaltech.":     {"vertical": "LegalTech",               "source_repo": "mizcausevic-dev/matter-decision-record-audit-stream",          "reference_repo": "mizcausevic-dev/matter-decision-record-audit-stream-reference",         "invariants": ["privilege-tier-consistency", "engagement-letter-binding", "citation-validation-before-production-ready"], "shape": "ref-impl"},
-
-    "grid.":          {"vertical": "EnergyTech",              "source_repo": "mizcausevic-dev/grid-decision-record-audit-stream",            "reference_repo": "mizcausevic-dev/grid-decision-record-audit-stream-reference",           "invariants": ["nerc-cip-008-1-hour-forward-cyber-incident-reporting-clock"]},
-    "energytech.":    {"vertical": "EnergyTech",              "source_repo": "mizcausevic-dev/grid-decision-record-audit-stream",            "reference_repo": "mizcausevic-dev/grid-decision-record-audit-stream-reference",           "invariants": ["nerc-cip-008-1-hour-forward-cyber-incident-reporting-clock"], "shape": "ref-impl"},
-
-    "defense.":       {"vertical": "DefenseTech",             "source_repo": "mizcausevic-dev/defense-decision-record-audit-stream",         "reference_repo": "mizcausevic-dev/defense-decision-record-audit-stream-reference",        "invariants": ["dfars-72-hour-forward-cyber-incident-clock", "cui-3-axis-vault-contract-cross-binding"]},
-    "defensetech.":   {"vertical": "DefenseTech",             "source_repo": "mizcausevic-dev/defense-decision-record-audit-stream",         "reference_repo": "mizcausevic-dev/defense-decision-record-audit-stream-reference",        "invariants": ["dfars-72-hour-forward-cyber-incident-clock", "cui-3-axis-vault-contract-cross-binding"], "shape": "ref-impl"},
-
-    "government.":    {"vertical": "GovTech",                 "source_repo": "mizcausevic-dev/government-decision-record-audit-stream",      "reference_repo": "mizcausevic-dev/government-decision-record-audit-stream-reference",     "invariants": ["impact-assessment-completed-before-deployment-precondition", "rights-impacting-vs-safety-impacting-disambiguation"]},
-    "govtech.":       {"vertical": "GovTech",                 "source_repo": "mizcausevic-dev/government-decision-record-audit-stream",      "reference_repo": "mizcausevic-dev/government-decision-record-audit-stream-reference",     "invariants": ["impact-assessment-completed-before-deployment-precondition", "rights-impacting-vs-safety-impacting-disambiguation"], "shape": "ref-impl"}
+    "fhir.": {
+      "vertical": "HealthTech",
+      "source_repo": "mizcausevic-dev/fhir-resource-access-audit",
+      "reference_repo": "mizcausevic-dev/fhir-resource-access-audit-reference",
+      "invariants": [
+        "human-clinician-required-on-adverse-outcome",
+        "fhir-permissible-purpose"
+      ]
+    },
+    "healthtech.": {
+      "vertical": "HealthTech",
+      "source_repo": "mizcausevic-dev/fhir-resource-access-audit",
+      "reference_repo": "mizcausevic-dev/fhir-resource-access-audit-reference",
+      "invariants": [
+        "human-clinician-required-on-adverse-outcome",
+        "fhir-permissible-purpose"
+      ],
+      "shape": "ref-impl-alias"
+    },
+    "student.": {
+      "vertical": "EdTech",
+      "source_repo": "mizcausevic-dev/student-data-access-audit-stream",
+      "reference_repo": "mizcausevic-dev/student-data-access-audit-stream-reference",
+      "invariants": [
+        "ferpa-school-official-or-consent-basis-required"
+      ]
+    },
+    "edtech.": {
+      "vertical": "EdTech",
+      "source_repo": "mizcausevic-dev/student-data-access-audit-stream",
+      "reference_repo": "mizcausevic-dev/student-data-access-audit-stream-reference",
+      "invariants": [
+        "ferpa-school-official-or-consent-basis-required",
+        "coppa-verifiable-parental-consent-must-precede-event-for-under-13"
+      ],
+      "shape": "ref-impl"
+    },
+    "mortgage.": {
+      "vertical": "PropTech / Real Estate",
+      "source_repo": "mizcausevic-dev/mortgage-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/mortgage-decision-record-audit-stream-reference",
+      "invariants": [
+        "human-underwriter-required-on-adverse-action"
+      ]
+    },
+    "proptech.": {
+      "vertical": "PropTech / Real Estate",
+      "source_repo": "mizcausevic-dev/mortgage-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/mortgage-decision-record-audit-stream-reference",
+      "invariants": [
+        "human-underwriter-required-UNIVERSAL-on-adverse-action-capable-kinds",
+        "ecoa-reg-b-30-day-adverse-action-notice-anchored-on-application-completed"
+      ],
+      "shape": "ref-impl"
+    },
+    "insurance.": {
+      "vertical": "Insurance / InsurTech",
+      "source_repo": "mizcausevic-dev/insurance-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/insurance-decision-record-audit-stream-reference",
+      "invariants": [
+        "human-adjudicator-required-on-adverse-action-capable-recommendation"
+      ]
+    },
+    "insurtech.": {
+      "vertical": "Insurance / InsurTech",
+      "source_repo": "mizcausevic-dev/insurance-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/insurance-decision-record-audit-stream-reference",
+      "invariants": [
+        "human-adjudicator-required-on-adverse-action-capable-recommendation-SCOPED",
+        "naic-model-bulletin-ai-90-day-bias-monitoring-bounded-backward-window"
+      ],
+      "shape": "ref-impl"
+    },
+    "employment.": {
+      "vertical": "HR Tech / Employment AI",
+      "source_repo": "mizcausevic-dev/employment-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/employment-decision-record-audit-stream-reference",
+      "invariants": [
+        "human-hiring-decision-required-on-adverse-action-capable",
+        "nyc-ll-144-candidate-notice-required-on-aedt-external-candidate-event"
+      ]
+    },
+    "hrtech.": {
+      "vertical": "HR Tech / Employment AI",
+      "source_repo": "mizcausevic-dev/employment-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/employment-decision-record-audit-stream-reference",
+      "invariants": [
+        "human-hiring-decision-required-on-adverse-action-capable",
+        "nyc-ll-144-14-day-backward-before-event-candidate-notice-window"
+      ],
+      "shape": "ref-impl"
+    },
+    "fintech.": {
+      "vertical": "FinTech",
+      "source_repo": "mizcausevic-dev/financial-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/financial-decision-record-audit-stream-reference",
+      "invariants": [
+        "human-credit-officer-required-on-adverse-action-capable",
+        "fcra-permissible-purpose-required-on-credit-bureau-resource"
+      ]
+    },
+    "matter.": {
+      "vertical": "LegalTech",
+      "source_repo": "mizcausevic-dev/matter-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/matter-decision-record-audit-stream-reference",
+      "invariants": [
+        "privilege-tier-consistency",
+        "engagement-letter-binding",
+        "citation-validation-before-production-ready"
+      ]
+    },
+    "legaltech.": {
+      "vertical": "LegalTech",
+      "source_repo": "mizcausevic-dev/matter-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/matter-decision-record-audit-stream-reference",
+      "invariants": [
+        "privilege-tier-consistency",
+        "engagement-letter-binding",
+        "citation-validation-before-production-ready"
+      ],
+      "shape": "ref-impl"
+    },
+    "grid.": {
+      "vertical": "EnergyTech",
+      "source_repo": "mizcausevic-dev/grid-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/grid-decision-record-audit-stream-reference",
+      "invariants": [
+        "nerc-cip-008-1-hour-forward-cyber-incident-reporting-clock"
+      ]
+    },
+    "energytech.": {
+      "vertical": "EnergyTech",
+      "source_repo": "mizcausevic-dev/grid-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/grid-decision-record-audit-stream-reference",
+      "invariants": [
+        "nerc-cip-008-1-hour-forward-cyber-incident-reporting-clock"
+      ],
+      "shape": "ref-impl"
+    },
+    "defense.": {
+      "vertical": "DefenseTech",
+      "source_repo": "mizcausevic-dev/defense-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/defense-decision-record-audit-stream-reference",
+      "invariants": [
+        "dfars-72-hour-forward-cyber-incident-clock",
+        "cui-3-axis-vault-contract-cross-binding"
+      ]
+    },
+    "defensetech.": {
+      "vertical": "DefenseTech",
+      "source_repo": "mizcausevic-dev/defense-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/defense-decision-record-audit-stream-reference",
+      "invariants": [
+        "dfars-72-hour-forward-cyber-incident-clock",
+        "cui-3-axis-vault-contract-cross-binding"
+      ],
+      "shape": "ref-impl"
+    },
+    "government.": {
+      "vertical": "GovTech",
+      "source_repo": "mizcausevic-dev/government-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/government-decision-record-audit-stream-reference",
+      "invariants": [
+        "impact-assessment-completed-before-deployment-precondition",
+        "rights-impacting-vs-safety-impacting-disambiguation"
+      ]
+    },
+    "govtech.": {
+      "vertical": "GovTech",
+      "source_repo": "mizcausevic-dev/government-decision-record-audit-stream",
+      "reference_repo": "mizcausevic-dev/government-decision-record-audit-stream-reference",
+      "invariants": [
+        "impact-assessment-completed-before-deployment-precondition",
+        "rights-impacting-vs-safety-impacting-disambiguation"
+      ],
+      "shape": "ref-impl"
+    },
+    "retail.": {
+      "vertical": "RetailTech / Consumer AI",
+      "source_repo": "mizcausevic-dev/retail-decision-record-audit-stream",
+      "invariants": [
+        "personalized-pricing-transparency-disclosure-required",
+        "biometric-consent-artifact-required"
+      ]
+    }
   },
   "state_tracker_repos": {
-    "fda-samd-classification-board":            {"vertical": "HealthTech",              "lifecycle_kind": "fda-samd-classification"},
-    "state-ai-disclosure-state-tracker":        {"vertical": "EdTech",                  "lifecycle_kind": "student-data-privacy-state-law"},
-    "state-real-estate-ai-disclosure-tracker":  {"vertical": "PropTech / Real Estate",  "lifecycle_kind": "state-real-estate-ai-law"},
-    "state-insurance-ai-disclosure-tracker":    {"vertical": "Insurance / InsurTech",   "lifecycle_kind": "state-doi-ai-bulletin"},
-    "state-employment-ai-disclosure-tracker":   {"vertical": "HR Tech / Employment AI", "lifecycle_kind": "state-and-local-employment-ai-law"},
-    "state-financial-ai-disclosure-tracker":    {"vertical": "FinTech",                 "lifecycle_kind": "state-banking-regulator-ai-law"},
-    "state-government-ai-disclosure-tracker":   {"vertical": "GovTech",                 "lifecycle_kind": "state-government-ai-law"},
-    "state-legal-ai-disclosure-tracker":        {"vertical": "LegalTech",               "lifecycle_kind": "state-bar-ai-opinion"},
-    "state-grid-ai-disclosure-tracker":         {"vertical": "EnergyTech",              "lifecycle_kind": "state-puc-grid-ai-order"},
-    "state-defense-ai-disclosure-tracker":      {"vertical": "DefenseTech",             "lifecycle_kind": "state-defense-contractor-disclosure"}
+    "fda-samd-classification-board": {
+      "vertical": "HealthTech",
+      "lifecycle_kind": "fda-samd-classification"
+    },
+    "state-ai-disclosure-state-tracker": {
+      "vertical": "EdTech",
+      "lifecycle_kind": "student-data-privacy-state-law"
+    },
+    "state-real-estate-ai-disclosure-tracker": {
+      "vertical": "PropTech / Real Estate",
+      "lifecycle_kind": "state-real-estate-ai-law"
+    },
+    "state-insurance-ai-disclosure-tracker": {
+      "vertical": "Insurance / InsurTech",
+      "lifecycle_kind": "state-doi-ai-bulletin"
+    },
+    "state-employment-ai-disclosure-tracker": {
+      "vertical": "HR Tech / Employment AI",
+      "lifecycle_kind": "state-and-local-employment-ai-law"
+    },
+    "state-financial-ai-disclosure-tracker": {
+      "vertical": "FinTech",
+      "lifecycle_kind": "state-banking-regulator-ai-law"
+    },
+    "state-government-ai-disclosure-tracker": {
+      "vertical": "GovTech",
+      "lifecycle_kind": "state-government-ai-law"
+    },
+    "state-legal-ai-disclosure-tracker": {
+      "vertical": "LegalTech",
+      "lifecycle_kind": "state-bar-ai-opinion"
+    },
+    "state-grid-ai-disclosure-tracker": {
+      "vertical": "EnergyTech",
+      "lifecycle_kind": "state-puc-grid-ai-order"
+    },
+    "state-defense-ai-disclosure-tracker": {
+      "vertical": "DefenseTech",
+      "lifecycle_kind": "state-defense-contractor-disclosure"
+    },
+    "state-retail-ai-disclosure-tracker": {
+      "vertical": "RetailTech / Consumer AI",
+      "lifecycle_kind": "state-retail-ai-law"
+    }
   },
   "reference_implementations": {
-    "fhir-resource-access-audit-reference":                       {"vertical": "HealthTech",              "ref_impl_kind_prefix": "fhir.",       "invariants": ["fhir-permissible-purpose", "human-clinician-required-on-adverse-outcome"]},
-    "matter-decision-record-audit-stream-reference":              {"vertical": "LegalTech",               "ref_impl_kind_prefix": "legaltech.",  "invariants": ["privilege-tier-consistency", "engagement-letter-binding", "citation-validation-before-production-ready"]},
-    "grid-decision-record-audit-stream-reference":                {"vertical": "EnergyTech",              "ref_impl_kind_prefix": "energytech.", "invariants": ["nerc-cip-008-1-hour-forward-cyber-incident-reporting-clock"]},
-    "defense-decision-record-audit-stream-reference":             {"vertical": "DefenseTech",             "ref_impl_kind_prefix": "defensetech.","invariants": ["dfars-72-hour-forward-cyber-incident-clock", "cui-3-axis-vault-contract-cross-binding"]},
-    "government-decision-record-audit-stream-reference":          {"vertical": "GovTech",                 "ref_impl_kind_prefix": "govtech.",    "invariants": ["impact-assessment-completed-before-deployment-precondition"]},
-    "financial-decision-record-audit-stream-reference":           {"vertical": "FinTech",                 "ref_impl_kind_prefix": "fintech.",    "invariants": ["fcra-permissible-purpose", "ecoa-timing-of-credit-decision-binding"]},
-    "employment-decision-record-audit-stream-reference":          {"vertical": "HR Tech / Employment AI", "ref_impl_kind_prefix": "hrtech.",     "invariants": ["nyc-ll-144-14-day-backward-before-event-candidate-notice-window", "eeoc-four-fifths-rule-bias-audit-timestamp-bound"]},
-    "student-data-access-audit-stream-reference":                 {"vertical": "EdTech",                  "ref_impl_kind_prefix": "edtech.",     "invariants": ["ferpa-school-official-or-consent-basis-required", "coppa-verifiable-parental-consent-must-precede-event-for-under-13"]},
-    "mortgage-decision-record-audit-stream-reference":            {"vertical": "PropTech / Real Estate",  "ref_impl_kind_prefix": "proptech.",   "invariants": ["human-underwriter-required-UNIVERSAL-on-adverse-action-capable-kinds", "ecoa-reg-b-30-day-adverse-action-notice-anchored-on-application-completed"]},
-    "insurance-decision-record-audit-stream-reference":           {"vertical": "Insurance / InsurTech",   "ref_impl_kind_prefix": "insurtech.",  "invariants": ["human-adjudicator-required-on-adverse-action-capable-recommendation-SCOPED", "naic-model-bulletin-ai-90-day-bias-monitoring-bounded-backward-window"]}
+    "fhir-resource-access-audit-reference": {
+      "vertical": "HealthTech",
+      "ref_impl_kind_prefix": "fhir.",
+      "invariants": [
+        "fhir-permissible-purpose",
+        "human-clinician-required-on-adverse-outcome"
+      ]
+    },
+    "matter-decision-record-audit-stream-reference": {
+      "vertical": "LegalTech",
+      "ref_impl_kind_prefix": "legaltech.",
+      "invariants": [
+        "privilege-tier-consistency",
+        "engagement-letter-binding",
+        "citation-validation-before-production-ready"
+      ]
+    },
+    "grid-decision-record-audit-stream-reference": {
+      "vertical": "EnergyTech",
+      "ref_impl_kind_prefix": "energytech.",
+      "invariants": [
+        "nerc-cip-008-1-hour-forward-cyber-incident-reporting-clock"
+      ]
+    },
+    "defense-decision-record-audit-stream-reference": {
+      "vertical": "DefenseTech",
+      "ref_impl_kind_prefix": "defensetech.",
+      "invariants": [
+        "dfars-72-hour-forward-cyber-incident-clock",
+        "cui-3-axis-vault-contract-cross-binding"
+      ]
+    },
+    "government-decision-record-audit-stream-reference": {
+      "vertical": "GovTech",
+      "ref_impl_kind_prefix": "govtech.",
+      "invariants": [
+        "impact-assessment-completed-before-deployment-precondition"
+      ]
+    },
+    "financial-decision-record-audit-stream-reference": {
+      "vertical": "FinTech",
+      "ref_impl_kind_prefix": "fintech.",
+      "invariants": [
+        "fcra-permissible-purpose",
+        "ecoa-timing-of-credit-decision-binding"
+      ]
+    },
+    "employment-decision-record-audit-stream-reference": {
+      "vertical": "HR Tech / Employment AI",
+      "ref_impl_kind_prefix": "hrtech.",
+      "invariants": [
+        "nyc-ll-144-14-day-backward-before-event-candidate-notice-window",
+        "eeoc-four-fifths-rule-bias-audit-timestamp-bound"
+      ]
+    },
+    "student-data-access-audit-stream-reference": {
+      "vertical": "EdTech",
+      "ref_impl_kind_prefix": "edtech.",
+      "invariants": [
+        "ferpa-school-official-or-consent-basis-required",
+        "coppa-verifiable-parental-consent-must-precede-event-for-under-13"
+      ]
+    },
+    "mortgage-decision-record-audit-stream-reference": {
+      "vertical": "PropTech / Real Estate",
+      "ref_impl_kind_prefix": "proptech.",
+      "invariants": [
+        "human-underwriter-required-UNIVERSAL-on-adverse-action-capable-kinds",
+        "ecoa-reg-b-30-day-adverse-action-notice-anchored-on-application-completed"
+      ]
+    },
+    "insurance-decision-record-audit-stream-reference": {
+      "vertical": "Insurance / InsurTech",
+      "ref_impl_kind_prefix": "insurtech.",
+      "invariants": [
+        "human-adjudicator-required-on-adverse-action-capable-recommendation-SCOPED",
+        "naic-model-bulletin-ai-90-day-bias-monitoring-bounded-backward-window"
+      ]
+    }
   }
 }
